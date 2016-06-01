@@ -1,12 +1,16 @@
+import java.util.Random;
 public class Persona
 {
 	private  String nombre, primer_apellido, segundo_apellido;
 	private  String CURP, RFC, CLVEE;
 	private  String fecha_nac,sexo, estado_nac, homonimia;
 	private  int    d_verif;
+	private  String vocales="AEIOU";
+	private  Random  r = new Random();
 
 	public void CapturaDatos()
 	{
+		String aux;
 		do
 		{
 			nombre=Teclado.LeeCadena("Ingrese su nombre(s): ");
@@ -33,7 +37,7 @@ public class Persona
 		}while(ValidaFecha(fecha_nac));
 		do
 		{
-			sexo =Teclado.LeeCadena("Ingrese su sexo  M / F: ");
+			sexo =Teclado.LeeCadena("Ingrese su sexo  M / H: ");
 			sexo=sexo.replace(" ","").toUpperCase();
 			
 		}while(ValidaSexo(sexo));
@@ -48,20 +52,28 @@ public class Persona
 
 	public void CalculaCURP()
 	{	
-		
-		CURP= CalculaPozitionEins() + CalculaPozitionZwei() + "";
-		System.out.println(CURP);
+		String aux,aux2;
+		aux= CalculaPozitionEins() + CalculaPozitionZwei() + ""+ CalculaPozitionDrei()+CalculaPozitionVier();
+		CURP=aux+""+CalculaPozitionfunf()+"0"+CalculaZufallszahl();
+		System.out.println("\n El CURP es: ");
+		System.out.print(CURP);
 	}
 
 	public void CalculaRFC()
 	{
-
+		RFC="";
+		for (int i=0;i<10 ;i++ ) {
+			
+			RFC=RFC+CURP.charAt(i);
+		}
+		System.out.println("\n El RFC es: ");
+		System.out.print(RFC);
 	}
 //Métodos de validaciones para  el texto ingresado
 	public boolean ValidaSexo(String texto)
 	{
 		for(int i=0;i<texto.length();i++)
-        if(!(texto.charAt(i) =='M' || texto.charAt(i) <='H') )
+        if(!(texto.charAt(i) =='M' || texto.charAt(i) =='H') )
          {
             System.out.println("EL TEXTO NO ES VALIDO  =/ ingresa H o M segun sea el caso");
             return true;
@@ -137,7 +149,42 @@ public class Persona
 
 	public String CalculaPozitionDrei()
 	{
-		return "";
+		sexo= sexo.replace(" ","").toUpperCase();
+		return sexo;
+	}
+
+	public String CalculaPozitionVier()
+	{
+		String aux;
+		aux = estado_nac.replace(" ","").toUpperCase();
+		char erstevocale= aux.charAt(0);
+		for (int i=0;i < vocales.length() ;i++ ) {
+			aux= aux.replace(vocales.charAt(i)+"","");
+		}
+		
+		return(erstevocale+""+aux.charAt(aux.length()-1));
+	}
+
+	public String CalculaPozitionfunf()
+	{
+		String aux=nombre;
+		String aux2 = primer_apellido;	
+		String aux3= segundo_apellido;
+		
+		for (int i=0;i < vocales.length() ;i++ ) {
+			aux= aux.replace(vocales.charAt(i)+"","");
+			aux2= aux2.replace(vocales.charAt(i)+"","");
+			aux3= aux3.replace(vocales.charAt(i)+"","");	
+		}
+		return(""+aux2.charAt(1)+aux3.charAt(1)+aux.charAt(1));
+
+	}
+
+	public String CalculaZufallszahl()
+	{
+		int zufallszahl = r.nextInt(10);
+		return""+zufallszahl;
+
 	}
 
 }

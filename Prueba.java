@@ -4,6 +4,7 @@ public class Prueba
 		Persona p = new Persona();
 		 p.CapturaDatos();
 		 p.CalculaCURP();
+		 p.CalculaRFC();
 			
 	}
 	
