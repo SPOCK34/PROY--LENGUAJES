@@ -55,8 +55,7 @@ public class Persona
 		String aux;
 		aux= CalculaPozitionEins() + CalculaPozitionZwei() + ""+ CalculaPozitionDrei()+CalculaPozitionVier();
 		CURP=aux+""+CalculaPozitionfunf()+"0"+CalculaZufallszahl();
-		System.out.println("\n El CURP es: ");
-		System.out.print(CURP);
+		System.out.println("\n El CURP es: "+CURP);
 	}
 
 	public void CalculaRFC()
@@ -66,13 +65,20 @@ public class Persona
 			
 			RFC=RFC+CURP.charAt(i);
 		}
-		System.out.println("\n El RFC es: ");
-		System.out.print(RFC);
+		System.out.println("\n El RFC es: "+RFC);
 	}
 	public void CalculaClaveElector()
 	{
 		CLVEE=CalculaP_EinsClave()+CalculaPozitionZwei()+CalculaP_DreiClave()+CalculaPozitionDrei();
 		CLVEE= CLVEE+CalculaP_VierClave();
+		System.out.println("\n La clave de elector de "+nombre+"es: "+CLVEE);
+	}
+
+	public void ImprimeClaves()
+	{
+		CalculaCURP();
+		CalculaRFC();
+		CalculaClaveElector();
 	}
 //Métodos de validaciones para  el texto ingresado
 	public boolean ValidaSexo(String texto)
@@ -206,7 +212,8 @@ public class Persona
 	{
 		Menu menu = new Menu();
 		int opcion;
-		String aux= " 1) Aguascalientes 	2) Baja California 		3) Baja California Sur\n";
+		String aux="";
+			aux=aux " 1) Aguascalientes 	2) Baja California 		3) Baja California Sur\n";
 		    aux=aux+" 4) Campeche 		    5) Coahuila  			6) Colima \n";
 			aux=aux+" 7) Chiapas 			8) Chihuahua 			9) Cd. Mx. \n";
 			aux=aux+"10) Durango 		   11) Guanajuato          12) Guerrero \n";
@@ -216,25 +223,36 @@ public class Persona
 			aux=aux+"22) Querétaro 		   23) Quintana Roo 	   24) San Luis Potosí \n";
 			aux=aux+"25) Sinaloa 		   26) Sonora   		   27) Tabasco \n";
 			aux=aux+"28) Tamaulipas  	   29) Tlaxcala  		   30) Veracruz \n";
-			aux=aux+"31) Yucatán           32) Zacatecas \n\n";
+			aux=aux+"31) Yucatán           32) Zacatecas   \n \n";
 
-
-
-		do 
-		{
-			opcion= menu.ListaMenu("aux",32);
-
-
-		}while(opcion != 32);
-		return"";
+			opcion= menu.ListaMenu(aux,32);
+			entidadf=opcion;
+			if (opcion<10)
+				return "0"+opcion;	
+		return ""+opcion;
 	}
 
 	public String CalculaP_VierClave()
 	{
+		if(entidadf <5){
+			if(sexo == "M")
+				return "0"+(entidadf*20);
+
+	 		return "0"+(entidadf*10);
+		}
+		else if(entidadf <10){
+				if(sexo == "M")
+					return ""+(entidadf*20);
+
+	 			return "0"+(entidadf*10);
+		}
 		if(sexo == "M")
 			return ""+(entidadf*20);
 
 	 	return ""+(entidadf*10);
+
+		
+		
 	}
 
 }
