@@ -205,18 +205,36 @@ public class Persona
 	public String CalculaP_DreiClave()
 	{
 		Menu menu = new Menu();
-		do
+		int opcion;
+		String aux= " 1) Aguascalientes 	2) Baja California 		3) Baja California Sur\n";
+		    aux=aux+" 4) Campeche 		    5) Coahuila  			6) Colima \n";
+			aux=aux+" 7) Chiapas 			8) Chihuahua 			9) Cd. Mx. \n";
+			aux=aux+"10) Durango 		   11) Guanajuato          12) Guerrero \n";
+			aux=aux+"13) Hidalgo 		   14) Jalisco  		   15) México (Edo.) \n";
+			aux=aux+"16) Michoacán 		   17) Morelos 			   18) Nayarit \n";
+			aux=aux+"19) Nuevo León 	   20) Oaxaca 			   21) Puebla\n";
+			aux=aux+"22) Querétaro 		   23) Quintana Roo 	   24) San Luis Potosí \n";
+			aux=aux+"25) Sinaloa 		   26) Sonora   		   27) Tabasco \n";
+			aux=aux+"28) Tamaulipas  	   29) Tlaxcala  		   30) Veracruz \n";
+			aux=aux+"31) Yucatán           32) Zacatecas \n\n";
+
+
+
+		do 
 		{
+			opcion= menu.ListaMenu("aux",32);
+
 
 		}while(opcion != 32);
+		return"";
 	}
 
 	public String CalculaP_VierClave()
 	{
 		if(sexo == "M")
-			return entidadf*20;
+			return ""+(entidadf*20);
 
-	 	return entidadf*10;
+	 	return ""+(entidadf*10);
 	}
 
 }
