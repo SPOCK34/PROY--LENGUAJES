@@ -5,7 +5,7 @@ public class Persona
 	private  String nombrem, primer_apellidom, segundo_apellidom;
 	private  String CURP, RFC, CLVEE;
 	private  String fecha_nac,sexo, estado_nac, homonimia;
-	private  int    d_verif;
+	private  int    d_verif,entidadf;
 	private  String vocales="AEIOU";
 	private  Random  r = new Random();
 
@@ -72,7 +72,7 @@ public class Persona
 	public void CalculaClaveElector()
 	{
 		CLVEE=CalculaP_EinsClave()+CalculaPozitionZwei()+CalculaP_DreiClave()+CalculaPozitionDrei();
-		CLVEE= CLVEE+;
+		CLVEE= CLVEE+CalculaP_VierClave();
 	}
 //Métodos de validaciones para  el texto ingresado
 	public boolean ValidaSexo(String texto)
@@ -204,12 +204,19 @@ public class Persona
 	}
 	public String CalculaP_DreiClave()
 	{
+		Menu menu = new Menu();
+		do
+		{
 
+		}while(opcion != 32);
 	}
 
 	public String CalculaP_VierClave()
 	{
-		
+		if(sexo == "M")
+			return entidadf*20;
+
+	 	return entidadf*10;
 	}
 
 }
