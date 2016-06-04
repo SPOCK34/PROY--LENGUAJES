@@ -1,53 +1,45 @@
 import java.util.Random;
-public class Persona
+public class PersonaFrame
 {
 	private  String nombre, primer_apellido, segundo_apellido;
 	private  String CURP, RFC, CLVEE;
-	private  String fecha_nac,sexo, estado_nac, homonimia;
+	private  String dia,mes,jahr,sexo, estado_nac, homonimia;
 	private  int    d_verif,entidadf;
 	private  String vocales="AEIOU";
 	private  Random  r = new Random();
 
-	public void CapturaDatos()
+	
+// Métodos set
+	public void SetNombre(String nom)
 	{
-		String aux;
-		do
-		{
-			nombre=Teclado.LeeCadena("Ingrese su nombre(s): ");
-			nombre=nombre.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(nombre));
-		do
-		{
-			primer_apellido =Teclado.LeeCadena("Ingrese su primer apellido: ");
-			primer_apellido=primer_apellido.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(primer_apellido));
-		do
-		{
-			segundo_apellido =Teclado.LeeCadena("Ingrese su segundo apellido: ");
-			segundo_apellido=segundo_apellido.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(segundo_apellido));
-		do
-		{
-			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento  ejemplo 13/08/1999 : ");
-			fecha_nac=fecha_nac.replace(" ","");
-		}while(ValidaFecha(fecha_nac));
-		do
-		{
-			sexo =Teclado.LeeCadena("Ingrese su sexo  M / H: ");
-			sexo=sexo.replace(" ","").toUpperCase();
-			
-		}while(ValidaSexo(sexo));
-		do
-		{
-			estado_nac=Teclado.LeeCadena("Ingrese el estado de procedencia: ");
-			estado_nac=estado_nac.replace(" ","").toUpperCase();
-			
-		}while(ValidaCadena(estado_nac));
-		
+		nom=nom.replace(" ","").toUpperCase();
+		nombre=nom;
 	}
+	public void SetApellido_M(String ap)
+	{
+		ap=ap.replace(" ","").toUpperCase();
+		primer_apellido=ap;
+	}
+	public void SetApellido_M(String apm)
+	{
+		apm=apm.replace("","").toUpperCase();
+	}
+	public void SetGeburtsdatum(String d, String m, String a)
+	{
+		d=d.replace(" ","").toUpperCase();
+		m=m.replace(" ","").toUpperCase();
+		a=a.replace(" ","").toUpperCase();
+		dia=d;
+		mes=m;
+		jahr=a;
+
+	}
+	public void SetSexo(String s)
+	{
+		s=s.replace(" ","").toUpperCase();
+		sexo=s;
+	}
+
 
 	public void CalculaCURP()
 	{	
@@ -80,17 +72,7 @@ public class Persona
 		CalculaClaveElector();
 	}
 //Métodos de validaciones para  el texto ingresado
-	public boolean ValidaSexo(String texto)
-	{
-		for(int i=0;i<texto.length();i++)
-        if(!(texto.charAt(i) =='M' || texto.charAt(i) =='H') )
-         {
-            System.out.println("EL TEXTO NO ES VALIDO  =/ ingresa H o M segun sea el caso");
-            return true;
-         }
-        return false;
-	}
-
+	
 	public boolean ValidaCadena(String texto)
 	{
 		boolean aux=false;
@@ -103,19 +85,7 @@ public class Persona
 
          return aux;    		
 	}
-	public boolean ValidaFecha(String texto)
-	{
-		for (int i=0;i<texto.length();i++ ) 
-			if(!(texto.charAt(i) >= '0' && texto.charAt(i) <= '9'|| texto.charAt(i)==47) )
-         		{
-            		System.out.println("EL TEXTO NO ES VALIDO  =/ ");
-            		i=texto.length();
-            		return true;
-         		}  
-		
-
-		return false;
-	}
+	
 	
 //Métodos para calcular el CURP
 
