@@ -2,6 +2,7 @@ import java.util.Random;
 public class Persona
 {
 	private  String nombre, primer_apellido, segundo_apellido;
+	private  String nombrem, primer_apellidom, segundo_apellidom;
 	private  String CURP, RFC, CLVEE;
 	private  String fecha_nac,sexo, estado_nac, homonimia;
 	private  int    d_verif;
@@ -33,7 +34,6 @@ public class Persona
 		{
 			fecha_nac=Teclado.LeeCadena("Ingrese su fecha de naciemiento  ejemplo 13/08/1999 : ");
 			fecha_nac=fecha_nac.replace(" ","");
-			System.out.println(fecha_nac);
 		}while(ValidaFecha(fecha_nac));
 		do
 		{
@@ -52,7 +52,7 @@ public class Persona
 
 	public void CalculaCURP()
 	{	
-		String aux,aux2;
+		String aux;
 		aux= CalculaPozitionEins() + CalculaPozitionZwei() + ""+ CalculaPozitionDrei()+CalculaPozitionVier();
 		CURP=aux+""+CalculaPozitionfunf()+"0"+CalculaZufallszahl();
 		System.out.println("\n El CURP es: ");
@@ -68,6 +68,11 @@ public class Persona
 		}
 		System.out.println("\n El RFC es: ");
 		System.out.print(RFC);
+	}
+	public void CalculaClaveElector()
+	{
+		CLVEE=CalculaP_EinsClave()+CalculaPozitionZwei()+CalculaP_DreiClave()+CalculaPozitionDrei();
+		CLVEE= CLVEE+;
 	}
 //Métodos de validaciones para  el texto ingresado
 	public boolean ValidaSexo(String texto)
@@ -182,9 +187,29 @@ public class Persona
 
 	public String CalculaZufallszahl()
 	{
-		int zufallszahl = r.nextInt(10);
-		return""+zufallszahl;
+		//int zufallszahl = r.nextInt(10);
+		return (""+r.nextInt(10));
+		//return""+zufallszahl;
 
+	}
+// Métodos para calcular Clave de Elector
+
+	public String CalculaP_EinsClave()
+	{
+		String cadena= ""+primer_apellido.charAt(0)+primer_apellido.charAt(1);
+		cadena= cadena+segundo_apellido.charAt(0)+segundo_apellido.charAt(1);
+		cadena=cadena+nombre.charAt(0)+nombre.charAt(1);
+
+		return(cadena);
+	}
+	public String CalculaP_DreiClave()
+	{
+
+	}
+
+	public String CalculaP_VierClave()
+	{
+		
 	}
 
 }
