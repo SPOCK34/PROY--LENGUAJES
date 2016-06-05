@@ -40,6 +40,36 @@ public class PersonaFrame
 		sexo=s;
 	}
 
+	public void SetGeburtsort(String ort)
+	{
+		ort=ort.replace(" ","").toUpperCase();
+		estado_nac=ort;
+
+	}
+	public void SetStaatsangehorigkeit(String entf)
+	{
+		entf=entf.replace(" ","");
+		switch(entf)
+		{
+			case "AGUASCALIENTES":     entidadf=1;  break;  case "BAJACALIFORNIA":   entidadf=2;  break;
+			case "BAJACALIFORNIASUR":  entidadf=3;  break;  case "CAMPECHE":         entidadf=4;  break;
+			case "COAHUILA":           entidadf=5;  break;  case "COLIMA":           entidadf=6;  break;
+			case "CHIAPAS":            entidadf=7;  break;  case "CHIHUAHUA":        entidadf=8;  break;
+			case "CIUDADDEMEXICO":     entidadf=9;  break;  case "DURANGO":          entidadf=10; break;
+			case "GUANAJUATO":         entidadf=11; break;  case "GUERRERO":         entidadf=12; break;
+			case "HIDALGO":            entidadf=13; break;  case "JALISCO":          entidadf=14; break;
+			case "MEXICO(EDO)":        entidadf=15; break;  case "MICHOACAN":        entidadf=16; break;
+			case "MORELOS":            entidadf=17; break;  case "NAYARIT":          entidadf=18; break;
+			case "NUEVOLEON":          entidadf=19; break;  case "OAXACA":           entidadf=20; break;
+			case "PUEBLA":             entidadf=21; break;  case "QUERERTARO":       entidadf=22; break;
+			case "QUINTANAROO":        entidadf=23; break;  case "SANLUISPOTOSI":    entidadf=24; break;
+			case "SINALOA":            entidadf=25; break;  case "SONORA":           entidadf=26; break;
+			case "TABASCO":            entidadf=27; break;  case "TAMAULIPAS":       entidadf=28; break;
+			case "TLAXCALA":           entidadf=29; break;  case "VERACRUZ":         entidadf=30; break;
+			case "YUCATAN":            entidadf=31; break;  case "ZACATECAS":        entidadf=32; break;
+
+		}
+	}
 
 	public void CalculaCURP()
 	{	
@@ -179,23 +209,8 @@ public class PersonaFrame
 	}
 	public String CalculaP_DreiClave()
 	{
-		Menu menu = new Menu();
-		int opcion;
-		String aux="";
-			aux=aux " 1) Aguascalientes 	2) Baja California 		3) Baja California Sur\n";
-		    aux=aux+" 4) Campeche 		    5) Coahuila  			6) Colima \n";
-			aux=aux+" 7) Chiapas 			8) Chihuahua 			9) Cd. Mx. \n";
-			aux=aux+"10) Durango 		   11) Guanajuato          12) Guerrero \n";
-			aux=aux+"13) Hidalgo 		   14) Jalisco  		   15) Mexico (Edo.) \n";
-			aux=aux+"16) Michoacan 		   17) Morelos 			   18) Nayarit \n";
-			aux=aux+"19) Nuevo Leon 	   20) Oaxaca 			   21) Puebla\n";
-			aux=aux+"22) Queretaro 		   23) Quintana Roo 	   24) San Luis Potosi \n";
-			aux=aux+"25) Sinaloa 		   26) Sonora   		   27) Tabasco \n";
-			aux=aux+"28) Tamaulipas  	   29) Tlaxcala  		   30) Veracruz \n";
-			aux=aux+"31) Yucatan           32) Zacatecas   \n \n Ingrese la entidad federativa de naciemiento: ";
-
-			opcion= menu.ListaMenu(aux,32);
-			entidadf=opcion;
+		
+			opcion=entidadf;
 			if (opcion<10)
 				return "0"+opcion;	
 		return ""+opcion;
