@@ -15,7 +15,7 @@ public class PersonaFrame
 		nom=nom.replace(" ","").toUpperCase();
 		nombre=nom;
 	}
-	public void SetApellido_M(String ap)
+	public void SetApellido_P(String ap)
 	{
 		ap=ap.replace(" ","").toUpperCase();
 		primer_apellido=ap;
@@ -76,7 +76,6 @@ public class PersonaFrame
 		String aux;
 		aux= CalculaPozitionEins() + CalculaPozitionZwei() + ""+ CalculaPozitionDrei()+CalculaPozitionVier();
 		CURP=aux+""+CalculaPozitionfunf()+"0"+CalculaZufallszahl();
-		System.out.println("\n El CURP es: "+CURP);
 	}
 
 	public void CalculaRFC()
@@ -86,13 +85,11 @@ public class PersonaFrame
 			
 			RFC=RFC+CURP.charAt(i);
 		}
-		System.out.println("\n El RFC es: "+RFC);
 	}
 	public void CalculaClaveElector()
 	{
 		CLVEE=CalculaP_EinsClave()+CalculaPozitionZwei()+CalculaP_DreiClave()+CalculaPozitionDrei();
 		CLVEE= CLVEE+CalculaP_VierClave();
-		System.out.println("\n La clave de elector de "+nombre+"es: "+CLVEE);
 	}
 
 	public void ImprimeClaves()
@@ -147,12 +144,8 @@ public class PersonaFrame
 
 	public String CalculaPozitionZwei()
 	{
-		String dia, mes, jahre;
-		String fecha;
-		String []aux =fecha_nac.split("/");
-		dia = aux[0];
-		mes = aux[1];
-		jahre = aux[2].charAt(2)+""+aux[2].charAt(3);
+		String jahre=""+jahr.charAt(jahr.length()-1)+jahr.charAt(jahr.length()-2);
+
 
 		return (jahre + mes + "" + dia);
 	}
@@ -209,7 +202,7 @@ public class PersonaFrame
 	}
 	public String CalculaP_DreiClave()
 	{
-		
+		int opcion;
 			opcion=entidadf;
 			if (opcion<10)
 				return "0"+opcion;	
